@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0xfe66c75198c9ca86ef520a3bb3575206aaba7a8b2c966f577d61170cc531d2d3");
+uint256 hashGenesisBlock("0x");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Sapotacoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1087,7 +1087,7 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 125 * COIN;
+    int64 nSubsidy = 75 * COIN;
 
     // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
     nSubsidy >>= (nHeight / 840000); // Sapotacoin: 840k blocks in ~4 years
@@ -1095,11 +1095,11 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-//static const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Sapotacoin: 3.5 days
-//static const int64 nTargetSpacing = 2.5 * 60; // Sapotacoin: 2.5 minutes
+static const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Sapotacoin: 3.5 days
+static const int64 nTargetSpacing = 2.5 * 60; // Sapotacoin: 2.5 minutes
 
-static const int64 nTargetTimespan = 10 * 30; // Sapotacoin: 5 minutes
-static const int64 nTargetSpacing = 1 * 30; // Sapotacoin: 30 seconds
+//static const int64 nTargetTimespan = 10 * 30; // Sapotacoin: 5 minutes
+//static const int64 nTargetSpacing = 1 * 30; // Sapotacoin: 30 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
@@ -2749,7 +2749,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc3;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0xfe66c75198c9ca86ef520a3bb3575206aaba7a8b2c966f577d61170cc531d2d3");
+        hashGenesisBlock = uint256("0x");
     }
 
     //
@@ -2787,7 +2787,7 @@ bool InitBlockIndex() {
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 125 * COIN;
+        txNew.vout[0].nValue = 75 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("123484710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
@@ -2796,12 +2796,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1516705844;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 202427;
+        block.nNonce   = 0;
 
         if (fTestNet)
         {
             block.nTime    = 1516705844;
-            block.nNonce   = 202427;
+            block.nNonce   = 0;
         }
 
         //// debug print
@@ -2809,7 +2809,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x96d4404ef990fb88439e2ee4c91381e127ff910b14c0c5c33bf0c96b30270aba"));
+        assert(block.hashMerkleRoot == uint256("0x"));
 
 // If genesis block hash does not match, then generate new genesis hash.
 
