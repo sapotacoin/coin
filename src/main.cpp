@@ -35,7 +35,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x21e2466a4aadfa517773070cbc03db633cd51a754295d4ea406d039def7137f6");
+uint256 hashGenesisBlock("0x");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Sapotacoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2749,7 +2749,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc3;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        hashGenesisBlock = uint256("0x21e2466a4aadfa517773070cbc03db633cd51a754295d4ea406d039def7137f6");
+        hashGenesisBlock = uint256("0x");
     }
 
     //
@@ -2796,12 +2796,12 @@ bool InitBlockIndex() {
         block.nVersion = 1;
         block.nTime    = 1516705844;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 266132;
+        block.nNonce   = 0;
 
         if (fTestNet)
         {
             block.nTime    = 1516705844;
-            block.nNonce   = 266132;
+            block.nNonce   = 0;
         }
 
         //// debug print
@@ -2809,7 +2809,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0xa0084a6588c5808d1976dc53ec9c475fb8151fe4d3328b41652d155251ee877d"));
+        assert(block.hashMerkleRoot == uint256("0x96d4404ef990fb88439e2ee4c91381e127ff910b14c0c5c33bf0c96b30270aba"));
 
 // If genesis block hash does not match, then generate new genesis hash.
 
