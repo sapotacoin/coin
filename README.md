@@ -74,9 +74,13 @@ sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler
 libqrencode (optional) can be installed with:
 sudo apt-get install libqrencode-dev
 
-Run 
+Compile
 -------
  make -f makefile.unix USE_UPNP=-
+ 
+Run 
+-----
+./sapotacoind
  
 GUI Wallet For Ubuntu
 --------------------
