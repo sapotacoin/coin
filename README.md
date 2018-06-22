@@ -12,10 +12,10 @@ What is Sapotacoin?
 Sapotacoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
  - 2.5 minute block targets
  - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+ - ~210 million total coins
 
 The rest is the same as Bitcoin.
- - 50 coins per block
+ - 125 coins per block
  - 2016 blocks to retarget difficulty
 
 For more information, as well as an immediately useable, binary version of
@@ -47,6 +47,37 @@ controversial.
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/sapotacoin-project/sapotacoin/tags) are created
 regularly to indicate new official, stable release versions of Sapotacoin.
+Important Library Link 
+-----------------------
+https://github.com/litecoin-project/litecoin/blob/master/doc/build-unix.md
+
+Installation Library
+----------------------------
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3
+sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+sudo apt-get install libboost-all-dev
+---------------------------------------
+Optional (see --with-miniupnpc and --enable-upnp-default):
+sudo apt-get install libminiupnpc-dev
+---------------------------------------
+
+ZMQ dependencies (provides ZMQ API 4.x):
+sudo apt-get install libzmq3-dev
+---------------------------------------
+Dependencies for the GUI: Ubuntu & Debian
+sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
+sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler
+
+libqrencode (optional) can be installed with:
+sudo apt-get install libqrencode-dev
+
+Run 
+-------
+ make -f makefile.unix USE_UPNP=-
+ 
+GUI Wallet For Ubuntu
+--------------------
+ qmake "USE_QRCODE=1" "USE_UPNP=-" "USE_IPV6=1" sapotacoin-qt.pro
 
 Testing
 -------
@@ -67,7 +98,7 @@ Unit tests for the core code are in `src/test/`. To compile and run them:
 
 Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
+    qmake BITCOIN_QT_TEST=1 -o Makefile.test sapotacoin-qt.pro
     make -f Makefile.test
     ./sapotacoin-qt_test
 
