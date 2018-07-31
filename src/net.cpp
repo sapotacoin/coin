@@ -1173,6 +1173,7 @@ void MapPort(bool)
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
+    {"sapbtc.com", "107.180.84.219"},
     {NULL, NULL}
 };
 
@@ -1289,7 +1290,7 @@ unsigned int pnSeed[] =
     0x0380796d, 0xa463f8a2, 0xa46fbdc7, 0x3b0cc547, 0xb6644f46, 0x4b90fc47, 0x39e3f563, 0x72d81e56,
     0xe177d9c7, 0x95bff743, 0xea985542, 0xc210ec55, 0xeef70b67, 0xc9eb175e, 0x844d38ad, 0x65afa247,
     0x72da6d26, 0xed165dbc, 0xe8c83ad0, 0x9a8f37d8, 0x925adf50, 0x6b6ac162, 0x4b969e32, 0x735e1c45,
-    0x4423ff60, 0xfa57ec6d, 0xcde2fb65, 0x11093257, 0x4748cd5b, 0x720c03dd, 0x8c7b0905, 0xba8b2e48
+    0x4423ff60, 0xfa57ec6d, 0xcde2fb65, 0x11093257, 0x4748cd5b, 0x8494977b, 0x8494F484, 0x6bb454db
 };
 
 void DumpAddresses()
